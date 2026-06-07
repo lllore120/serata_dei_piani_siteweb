@@ -1,1 +1,340 @@
-<h1> Hello</h1>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benvenuto nel mio sito</title>
+    <style>
+        /* Reset degli stili di base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Barra di navigazione */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(30, 60, 114, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #00f2fe;
+        }
+
+        /* Stile generale delle sezioni */
+        section {
+            padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Sezione Hero (Benvenuto) */
+        #home {
+            background: transparent;
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: #e0e0e0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #00f2fe;
+            color: #1e3c72;
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 242, 254, 0.6);
+        }
+
+        /* Sezione Info / Chi Siamo */
+        #info {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #00f2fe;
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .info-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            width: 300px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #00f2fe;
+        }
+
+        /* Sezione Contatti */
+        #contatti {
+            background: transparent;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #00f2fe;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #00f2fe;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #00f2fe;
+            color: #1e3c72;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #00c6ff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(15, 32, 67, 0.9);
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #a0a0a0;
+        }
+
+        /* Animazioni */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul li {
+                margin: 0 15px;
+            }
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            section {
+                padding: 140px 20px 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigazione fissa -->
+    <nav>
+        <div class="logo">MioSito</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#info">Chi Sono</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sezione Home / Benvenuto -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>Benvenuto nel mio spazio web!</h1>
+            <p>Sono felice che tu sia qui. Questa è una pagina moderna a sezione unica progettata per presentare idee, progetti o passioni.</p>
+            <a href="#info" class="btn">Scopri di più</a>
+        </div>
+    </section>
+
+    <!-- Sezione Info / Servizi -->
+    <section id="info">
+        <h2 class="section-title">Cosa Faccio</h2>
+        <div class="info-cards">
+            <div class="card">
+                <h3>Sviluppo Web</h3>
+                <p>Creo pagine web moderne, veloci e ottimizzate per ogni tipo di dispositivo, utilizzando le ultime tecnologie.</p>
+            </div>
+            <div class="card">
+                <h3>Design Creativo</h3>
+                <p>Curo l'aspetto visivo per garantire un'esperienza utente (UX/UI) piacevole, pulita e professionale.</p>
+            </div>
+            <div class="card">
+                <h3>Condivisione</h3>
+                <p>Uso questo spazio per mettere in mostra i miei progetti personali e le mie competenze con il mondo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Contatti -->
+    <section id="contatti">
+        <h2 class="section-title">Scrivimi</h2>
+        <div class="contact-form">
+            <form onsubmit="event.preventDefault(); alert('Messaggio inviato con successo! (Simulazione)');">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" placeholder="Il tuo nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="La tua email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Messaggio</label>
+                    <textarea id="message" rows="4" placeholder="Di cosa hai bisogno?" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Invia Messaggio</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Piè di pagina -->
+    <footer>
+        <p>&copy; 2026 MioSito. Creato con HTML e CSS.</p>
+    </footer>
+
+</body>
+</html>
